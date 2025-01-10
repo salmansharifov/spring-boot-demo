@@ -9,7 +9,8 @@ group = 'com.example'
 version = '0.0.1-SNAPSHOT'
 
 java {
-    sourceCompatibility = '21'
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
 }
 
 repositories {
@@ -29,5 +30,9 @@ tasks.named('test') {
 
 bootBuildImage {
     builder = "paketobuildpacks/builder:base"
-    imageName = "spring-boot-demo"
+    imageName = "${project.name}:${project.version}"
+    environment = [
+        "BP_JVM_VERSION": "21.*",
+        "BP_JAVA_VERSION": "21"
+    ]
 }
