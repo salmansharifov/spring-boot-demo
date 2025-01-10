@@ -1,0 +1,10 @@
+[[buildpacks]]
+uri = "paketo-buildpacks/java"
+version = "latest"
+
+[[buildpacks]]
+uri = "paketo-buildpacks/spring-boot"
+version = "latest"
+
+[builder]
+image = "paketobuildpacks/builder:base"

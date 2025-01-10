@@ -26,3 +26,8 @@ dependencies {
 tasks.named('test') {
     useJUnitPlatform()
 }
+
+bootBuildImage {
+    builder = "paketobuildpacks/builder:base"
+    imageName = "spring-boot-demo"
+}
