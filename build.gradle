@@ -13,6 +13,19 @@ java {
     targetCompatibility = JavaVersion.VERSION_21
 }
 
+configurations.all {
+    resolutionStrategy {
+        componentSelection {
+            all { selection ->
+                def artifactView = selection.getArtifactView()
+                if (artifactView != null && !artifactView.isLenient()) {
+                    logger.warn("Non-lenient artifact view found: ${artifactView}")
+                }
+            }
+        }
+    }
+}
+
 repositories {
     mavenCentral()
 }
@@ -35,4 +48,6 @@ bootBuildImage {
         "BP_JVM_VERSION": "21.*",
         "BP_JAVA_VERSION": "21"
     ]
+    
+    verbose = true
 }
